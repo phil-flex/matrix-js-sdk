@@ -388,7 +388,7 @@ Crypto.prototype.createRecoveryKeyFromPassphrase = async function(password) {
         } else {
             keyInfo.pubkey = decryption.generate_key();
         }
-        const privateKey = decryption.get_private_key();
+        const privateKey = keyInfo.key = decryption.get_private_key();
         const encodedPrivateKey = encodeRecoveryKey(privateKey);
         return { keyInfo, encodedPrivateKey, privateKey };
     } finally {
